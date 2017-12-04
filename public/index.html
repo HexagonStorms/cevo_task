@@ -3,14 +3,19 @@
 	<head>
 		<script src="js/angular.min.js"></script>
 		<script src="js/angular-route.min.js"></script>
+        <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+        <script src="js/bootstrap.min.js"></script>
 		<script src="js/bundle.js"></script>
 		<link rel="stylesheet" href="css/bundle.css" type="text/css">
         <title>Cevo App</title>
 	</head>
-	<body>
+	<body ng-controller="cevoCtrl">
 		<nav class="navbar navbar-default">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#/">
+                <a class="navbar-brand" href="/#!/">
                     <transition name="fade" appear>
                         <img alt="Brand" src="img/jp_logo.png" id="brand-logo">
                     </transition>
@@ -22,10 +27,19 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a class="hvr-underline-from-center hvr-grow" href="#/">HOME</a></li>
-                    <li><a class="hvr-underline-from-center hvr-grow" href="#/resume">RESUME</a></li>
-                    <li><a class="hvr-underline-from-center hvr-grow" href="#/portfolio">PORTFOLIO</a></li>
+                <ul class="nav navbar-nav">
+                    <li ng-repeat="category in navigation" ng-class="{ 'dropdown': category.areas.length > 0 }">
+                        
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span ng-click="goToCategory(category.id)">{{category.title}}</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="area in category.areas">
+                                <a href="javascript:void(0)" ng-click="goToArea(category.id, area.id)">{{area.title}}</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
                 
             </div>

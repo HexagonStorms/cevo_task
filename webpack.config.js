@@ -1,9 +1,10 @@
-// var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const path = require('path');
 
 module.exports = {
     entry: [
+        './public/js/navigation-service.js',
         './public/js/app.js',
         './public/css/app.scss'
     ],
