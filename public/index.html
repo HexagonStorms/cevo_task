@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="cevoApp">
+	<head>
+		<script src="js/angular.min.js"></script>
+		<script src="js/angular-route.min.js"></script>
+		<script src="js/bundle.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="css/app.css" type="text/css">
+	</head>
+	<body ng-view>
+		<nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">
+                    <transition name="fade" appear>
+                        <img alt="Brand" src="img/jp_logo.png" id="brand-logo">
+                    </transition>
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hvr-underline-from-center hvr-grow" href="#/">HOME</a></li>
+                    <li><a class="hvr-underline-from-center hvr-grow" href="#/resume">RESUME</a></li>
+                    <li><a class="hvr-underline-from-center hvr-grow" href="#/portfolio">PORTFOLIO</a></li>
+                </ul>
+                
+            </div>
+        </nav>
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>This is the main index page</h2>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
