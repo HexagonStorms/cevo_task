@@ -5,8 +5,9 @@
 		<script src="js/angular-route.min.js"></script>
 		<script src="js/bundle.js"></script>
 		<link rel="stylesheet" href="css/bundle.css" type="text/css">
+        <title>Cevo App</title>
 	</head>
-	<body ng-view>
+	<body>
 		<nav class="navbar navbar-default">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#/">
@@ -30,12 +31,7 @@
             </div>
         </nav>
 		
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>This is the main index page</h2>
-				</div>
-			</div>
-		</div>
+        
+		<div class="container" ng-view></div>
 	</body>
 </html>

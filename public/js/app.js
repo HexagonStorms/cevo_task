@@ -170,9 +170,23 @@ var navigation = [
 angular.module("cevoApp", ["ngRoute"])
     // .service("$navigationService", navigationService)
     .config(["$routeProvider", function(routeProvider) {
-        routeProvider.when("/", {
-            templateUrl: "../index.html"
-        }).otherwise({
+        routeProvider
+        .when("/", {
+            templateUrl: "../views/main.html"
+        })
+        .when("/:category", {
+            templateUrl: "../views/category.html"
+        })
+        .when("/:category/:area", {
+            templateUrl: "../views/area.html"
+        })
+        .when("/:category/:subarea", {
+            templateUrl: "../views/subarea.html"
+        })
+        .when("/:category/:subarea/:child", {
+            templateUrl: "../views/child.html"
+        })
+        .otherwise({
            redirectTo: '/' 
         });
     }])

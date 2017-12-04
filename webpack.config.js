@@ -1,4 +1,4 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+// var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const path = require('path');
 
@@ -13,17 +13,17 @@ module.exports = {
     },
     devServer: {
         contentBase: './',
-        port: 9000,
+        port: 8600,
         contentBase: path.join(__dirname, "public")
     },
     module: {
         rules: [{
-    test: /\.scss$/,
-    loader: ExtractTextPlugin.extract(
-        // 'style-loader', // backup loader when not building .css file
-        'css-loader!sass-loader' // loaders to preprocess CSS
-    )
-}]
+            test: /\.scss$/,
+            loader: ExtractTextPlugin.extract(
+                // 'style-loader', // backup loader when not building .css file
+                'css-loader!sass-loader' // loaders to preprocess CSS
+            )
+        }]
     },
     plugins: [
             new ExtractTextPlugin({ // define where to save the file
