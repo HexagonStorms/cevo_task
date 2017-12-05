@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="cevoApp">
 	<head>
-		<script src="js/angular.min.js"></script>
-		<script src="js/angular-route.min.js"></script>
-        <script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 		<script src="js/bundle.js"></script>
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/jp_logo_grey.png">
 		<link rel="stylesheet" href="css/bundle.css" type="text/css">
-        <title>Cevo App</title>
+        <title>Cevo Development Task</title>
 	</head>
 	<body ng-controller="cevoCtrl">
 		<nav class="navbar navbar-default">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/#!/">
-                    <transition name="fade" appear>
-                        <img alt="Brand" src="img/jp_logo.png" id="brand-logo">
-                    </transition>
+                    <img alt="Brand" src="img/jp_logo.png" id="brand-logo">
                 </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
@@ -51,7 +45,8 @@
                                             
                                             <!-- CHILDREN -->
                                             <li ng-repeat="child in subArea.children">
-                                                <a href="javascript:void(0)" ng-click="goToChild(category.id, area.id, subArea.id, child.id)">{{child.title}}</a></li>
+                                                <a href="javascript:void(0)" ng-click="goToChild(category.id, area.id, subArea.id, child.id)">{{child.title}}</a>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>
