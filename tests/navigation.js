@@ -15,8 +15,4 @@ describe("Navigation Service", function() {
     it('Exists', function() {
         expect(NavigationService).toBeDefined();
     });
-    
-    // it('', function() {
-    //     expect(NavigationService).toBeDefined();
-    // });
 });
