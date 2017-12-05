@@ -88,22 +88,22 @@ var navigationStructure = __webpack_require__(4);
 var navigationService = __webpack_require__(5);
 
 var categoryCtrl = function($scope, $navigationService) {
-    console.log('Category Controller has loaded');
+    console.log('Category Controller loaded');
     $scope.routes = $navigationService.routes;
 };
 
 var areaCtrl = function($scope, $navigationService) {
-    console.log('area Controller has loaded');
+    console.log('Area Controller loaded');
     $scope.routes = $navigationService.routes;
 };
 
 var subAreaCtrl = function($scope, $navigationService) {
-    console.log('subArea Controller has loaded');
+    console.log('Sub-Area Controller loaded');
     $scope.routes = $navigationService.routes;
 };
 
 var childCtrl = function($scope, $navigationService) {
-    console.log('Child Controller has loaded');
+    console.log('Child Controller loaded');
     $scope.routes = $navigationService.routes;
 };
 
@@ -138,8 +138,8 @@ angular
 }])
 
 // Main Application Controller for Navigation Menu
-.controller("cevoCtrl", function($scope, $navigationService, $routeParams) {
-    console.log('cevo controller loaded');
+.controller("cevoCtrl", function($scope, $navigationService) {
+    console.log('CEVO Main Controller loaded');
     $scope.navigation = navigationStructure;
     
     $scope.goToCategory = function(categoryId) {
@@ -159,10 +159,9 @@ angular
     }
 });
 
-// Mock App
+// Mock App Karma/Jasmine Testing
 (function() {
   'use strict';
-  // Creating the module and factory I reference in the beforeEach blocks in navigation.js
   angular.module('mockApp', [])
   .service('NavigationService', function() {
     var NavigationService = navigationService;
