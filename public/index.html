@@ -36,21 +36,22 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                            <li ng-repeat="area in category.areas" class="dropdown-submenu">
+                            <li ng-repeat="area in category.areas" ng-class="{ 'dropdown-submenu' : area.sub_areas.length > 0 }">
                                 
                                 <!-- AREAS -->
                                 <a href="javascript:void(0)" ng-click="goToArea(category.id, area.id)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
                                     {{area.title}}
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" ng-if="area.sub_areas.length > 0">
                                     
                                     <!-- SUBAREAS -->
-                                    <li class="dropdown-submenu" ng-repeat="subArea in area.sub_areas">
-                                        <a href="#">{{subArea.title}}</a>
-                                        <ul class="dropdown-menu">
+                                    <li ng-class="{ 'dropdown-submenu' : subArea.children.length > 0 }" ng-repeat="subArea in area.sub_areas">
+                                        <a href="javascript:void(0)" ng-click="goToSubArea(category.id, area.id, subArea.id)">{{subArea.title}}</a>
+                                        <ul class="dropdown-menu" ng-if="subArea.children.length > 0">
                                             
                                             <!-- CHILDREN -->
-                                            <li ng-repeat="child in subArea.children"><a href="#">{{child.title}}</a></li>
+                                            <li ng-repeat="child in subArea.children">
+                                                <a href="javascript:void(0)" ng-click="goToChild(category.id, area.id, subArea.id, child.id)">{{child.title}}</a></li>
                                         </ul>
                                     </li>
                                 </ul>

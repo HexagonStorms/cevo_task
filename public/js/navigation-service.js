@@ -4,6 +4,7 @@ function navigationService($location) {
 }
 
 // Find which view is requested, load appropriate template/data
+// Here is where we could insert any additional application logic
 navigationService.prototype.navigateToCategory = function (categoryId) {
     this.locationService.path(categoryId);
 };
@@ -25,6 +26,5 @@ navigationService.categoryViewPath = "/:categoryId";
 navigationService.areaViewPath = "/:categoryId/:areaId";
 navigationService.subAreaViewPath = "/:categoryId/:areaId/:subAreaId";
 navigationService.childAreaViewPath = "/:categoryId/:areaId/:subAreaId/:childId";
-navigationService.$inject = ["$location"];
 
 module.exports = navigationService;

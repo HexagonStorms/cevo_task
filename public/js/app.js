@@ -3,6 +3,7 @@ var navigationService = require('./navigation-service.js');
 
 var categoryCtrl = function($scope, $navigationService, $routeParams) {
     console.log('Category Controller has loaded');
+    console.log($navigationService);
     $scope.categoryId = $routeParams.categoryId;
 };
 
@@ -27,7 +28,7 @@ var childCtrl = function($scope, $navigationService, $routeParams) {
     $scope.childId = $routeParams.childId;
 };
 
-// Routes + Angular Instantiation
+// Application Routes + Angular Instantiation
 angular
 .module("cevoApp", ["ngRoute"])
 .service("$navigationService", navigationService)
@@ -62,19 +63,19 @@ angular
     console.log('controller loaded');
     $scope.navigation = navigationStructure;
     
-    $scope.goToCategory = function(category) {
-        $navigationService.navigateToCategory(category);
+    $scope.goToCategory = function(categoryId) {
+        $navigationService.navigateToCategory(categoryId);
     }
     
-    $scope.goToArea = function(category, area) {
-        $navigationService.navigateToArea(category, area);
+    $scope.goToArea = function(categoryId, areaId) {
+        $navigationService.navigateToArea(categoryId, areaId);
     }
     
-    $scope.goToSubArea = function(category, area, subArea) {
-        $navigationService.navigateToSubArea(category, area, subArea);
+    $scope.goToSubArea = function(categoryId, areaId, subAreaId) {
+        $navigationService.navigateToSubArea(categoryId, areaId, subAreaId);
     }
     
-    $scope.goToChild = function(category, area, subArea, child) {
-        $navigationService.navigateToChild();
+    $scope.goToChild = function(categoryId, areaId, subAreaId, childId) {
+        $navigationService.navigateToChild(categoryId, areaId, subAreaId, childId);
     }
 });
