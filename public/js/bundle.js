@@ -89,7 +89,6 @@ var navigationService = __webpack_require__(5);
 
 var categoryCtrl = function($scope, $navigationService, $routeParams) {
     console.log('Category Controller has loaded');
-    console.log($navigationService);
     $scope.categoryId = $routeParams.categoryId;
 };
 
@@ -146,7 +145,7 @@ angular
 
 // Main Application Controller for Navigation Menu
 .controller("cevoCtrl", function($scope, $navigationService, $routeParams) {
-    console.log('controller loaded');
+    console.log('cevo controller loaded');
     $scope.navigation = navigationStructure;
     
     $scope.goToCategory = function(categoryId) {
@@ -165,6 +164,17 @@ angular
         $navigationService.navigateToChild(categoryId, areaId, subAreaId, childId);
     }
 });
+
+// Mock App
+(function() {
+  'use strict';
+  // Creating the module and factory I reference in the beforeEach blocks in navigation.js
+  angular.module('mockApp', [])
+  .service('NavigationService', function() {
+    var NavigationService = navigationService;
+    return NavigationService;
+  });
+})();
 
 /***/ }),
 /* 2 */
@@ -35932,7 +35942,6 @@ module.exports = navigation;
 /***/ (function(module, exports) {
 
 function navigationService($location) {
-    console.log('in here');
     this.locationService = $location;
 }
 

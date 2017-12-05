@@ -13,21 +13,20 @@ module.exports = {
     },
     devServer: {
         contentBase: './',
-        port: 9876,
+        port: 9000,
         contentBase: path.join(__dirname, "public")
     },
     module: {
         rules: [{
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract(
-                // 'style-loader', // backup loader when not building .css file
-                'css-loader!sass-loader' // loaders to preprocess CSS
+                'css-loader!sass-loader'
                 
             )
         }]
     },
     plugins: [
-            new ExtractTextPlugin({ // define where to save the file
+            new ExtractTextPlugin({
             filename: '../css/bundle.css',
             allChunks: true
         })

@@ -6,7 +6,6 @@ var navigationService = require('./navigation-service.js');
 
 var categoryCtrl = function($scope, $navigationService, $routeParams) {
     console.log('Category Controller has loaded');
-    console.log($navigationService);
     $scope.categoryId = $routeParams.categoryId;
 };
 
@@ -82,3 +81,14 @@ angular
         $navigationService.navigateToChild(categoryId, areaId, subAreaId, childId);
     }
 });
+
+// Mock App
+(function() {
+  'use strict';
+  // Creating the module and factory I reference in the beforeEach blocks in navigation.js
+  angular.module('mockApp', [])
+  .service('NavigationService', function() {
+    var NavigationService = navigationService;
+    return NavigationService;
+  });
+})();

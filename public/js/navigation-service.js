@@ -1,5 +1,4 @@
 function navigationService($location) {
-    console.log('in here');
     this.locationService = $location;
 }
 
