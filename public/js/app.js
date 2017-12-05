@@ -63,7 +63,7 @@ angular
 
 // Main Application Controller for Navigation Menu
 .controller("cevoCtrl", function($scope, $navigationService, $routeParams) {
-    console.log('controller loaded');
+    console.log('cevo controller loaded');
     $scope.navigation = navigationStructure;
     
     $scope.goToCategory = function(categoryId) {

@@ -5814,6 +5814,31 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+/* Generating a random color for each type of view for fun */
+.border-blue {
+  border-color: #3ea5ce !important; }
+
+.border-green {
+  border-color: #99c712 !important; }
+
+.border-yellow {
+  border-color: #ffba00 !important; }
+
+.border-red {
+  border-color: #E53B3A !important; }
+
+.background-blue {
+  background-color: #3ea5ce; }
+
+.background-green {
+  background-color: #99c712; }
+
+.background-yellow {
+  background-color: #ffba00; }
+
+.background-red {
+  background-color: #E53B3A; }
+
 #brand-logo {
   width: 35px; }
 
@@ -5857,3 +5882,24 @@ button.close {
   -webkit-border-radius: 6px 0 6px 6px;
   -moz-border-radius: 6px 0 6px 6px;
   border-radius: 6px 0 6px 6px; }
+
+.box {
+  border: 2px solid; }
+
+.box h2 {
+  color: white;
+  padding: 10px;
+  text-align: center; }
+
+.box p {
+  color: #333;
+  padding: 10px;
+  font-size: 4em;
+  font-weight: bold;
+  text-align: center; }
+
+.box {
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-top-left-radius: 5px; }
