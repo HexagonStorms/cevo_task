@@ -87,30 +87,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var navigationStructure = __webpack_require__(4);
 var navigationService = __webpack_require__(5);
 
-var categoryCtrl = function($scope, $navigationService, $routeParams) {
+var categoryCtrl = function($scope, $navigationService) {
     console.log('Category Controller has loaded');
-    $scope.categoryId = $routeParams.categoryId;
+    $scope.routes = $navigationService.routes;
 };
 
-var areaCtrl = function($scope, $navigationService, $routeParams) {
+var areaCtrl = function($scope, $navigationService) {
     console.log('area Controller has loaded');
-    $scope.categoryId = $routeParams.categoryId;
-    $scope.areaId = $routeParams.areaId;
+    $scope.routes = $navigationService.routes;
 };
 
-var subAreaCtrl = function($scope, $navigationService, $routeParams) {
+var subAreaCtrl = function($scope, $navigationService) {
     console.log('subArea Controller has loaded');
-    $scope.categoryId = $routeParams.categoryId;
-    $scope.areaId = $routeParams.areaId;
-    $scope.subAreaId = $routeParams.subAreaId;
+    $scope.routes = $navigationService.routes;
 };
 
-var childCtrl = function($scope, $navigationService, $routeParams) {
+var childCtrl = function($scope, $navigationService) {
     console.log('Child Controller has loaded');
-    $scope.categoryId = $routeParams.categoryId;
-    $scope.areaId = $routeParams.areaId;
-    $scope.subAreaId = $routeParams.subAreaId;
-    $scope.childId = $routeParams.childId;
+    $scope.routes = $navigationService.routes;
 };
 
 // Application Routes + Angular Instantiation
@@ -35947,20 +35941,39 @@ function navigationService($location) {
 
 // Find which view is requested, load appropriate template/data
 // Here is where we could insert any additional application logic
+// Creating a route params object for demonstrative purposes, although $routeParams can do the same thing
 navigationService.prototype.navigateToCategory = function (categoryId) {
     this.locationService.path(categoryId);
+    this.routes = {
+    	category: categoryId
+    };
 };
 
 navigationService.prototype.navigateToArea = function (categoryId, areaId) {
     this.locationService.path(categoryId + "/" + areaId);
+    this.routes = {
+    	category: categoryId,
+    	area: areaId
+    };
 };
 
 navigationService.prototype.navigateToSubArea = function (categoryId, areaId, subAreaId) {
     this.locationService.path(categoryId + "/" + areaId + "/" + subAreaId);
+    this.routes = {
+    	category: categoryId,
+    	area: areaId,
+    	subArea: subAreaId
+    };
 };
 
 navigationService.prototype.navigateToChild = function (categoryId, areaId, subAreaId, childId) {
     this.locationService.path(categoryId + "/" + areaId + "/" + subAreaId + "/" + childId);
+    this.routes = {
+    	category: categoryId,
+    	area: areaId,
+    	subArea: subAreaId,
+    	child: childId
+    };
 };
 
 // Templates for each type of view

@@ -1,4 +1,4 @@
-describe("Test Navigation Service", function() {
+describe("Navigation Service", function() {
     var NavigationService;
     
     beforeEach(angular.mock.module('mockApp'));
@@ -12,8 +12,11 @@ describe("Test Navigation Service", function() {
     // }));
     // beforeEach(module('cevoApp'));
     
-    it('should exist', function() {
-        console.log(NavigationService);
+    it('Exists', function() {
         expect(NavigationService).toBeDefined();
     });
+    
+    // it('', function() {
+    //     expect(NavigationService).toBeDefined();
+    // });
 });

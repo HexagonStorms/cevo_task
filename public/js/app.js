@@ -4,30 +4,24 @@ import "../../node_modules/angular-route/angular-route";
 var navigationStructure = require('./navigation-structure.js');
 var navigationService = require('./navigation-service.js');
 
-var categoryCtrl = function($scope, $navigationService, $routeParams) {
+var categoryCtrl = function($scope, $navigationService) {
     console.log('Category Controller has loaded');
-    $scope.categoryId = $routeParams.categoryId;
+    $scope.routes = $navigationService.routes;
 };
 
-var areaCtrl = function($scope, $navigationService, $routeParams) {
+var areaCtrl = function($scope, $navigationService) {
     console.log('area Controller has loaded');
-    $scope.categoryId = $routeParams.categoryId;
-    $scope.areaId = $routeParams.areaId;
+    $scope.routes = $navigationService.routes;
 };
 
-var subAreaCtrl = function($scope, $navigationService, $routeParams) {
+var subAreaCtrl = function($scope, $navigationService) {
     console.log('subArea Controller has loaded');
-    $scope.categoryId = $routeParams.categoryId;
-    $scope.areaId = $routeParams.areaId;
-    $scope.subAreaId = $routeParams.subAreaId;
+    $scope.routes = $navigationService.routes;
 };
 
-var childCtrl = function($scope, $navigationService, $routeParams) {
+var childCtrl = function($scope, $navigationService) {
     console.log('Child Controller has loaded');
-    $scope.categoryId = $routeParams.categoryId;
-    $scope.areaId = $routeParams.areaId;
-    $scope.subAreaId = $routeParams.subAreaId;
-    $scope.childId = $routeParams.childId;
+    $scope.routes = $navigationService.routes;
 };
 
 // Application Routes + Angular Instantiation
