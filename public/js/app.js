@@ -1,7 +1,5 @@
 import "../../node_modules/angular/angular";
 import "../../node_modules/angular-route/angular-route";
-var $ = require("jquery");
-// import "../../node_modules/bootstrap-sass/assets/javascripts/bootstrap";
 
 var navigationStructure = require('./navigation-structure.js');
 var navigationService = require('./navigation-service.js');

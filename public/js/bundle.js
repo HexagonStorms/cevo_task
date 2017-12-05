@@ -83,8 +83,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_angular_route_angular_route___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_angular_route_angular_route__);
 
 
-// var $ = require("jquery");
-// import "../../node_modules/bootstrap-sass/assets/javascripts/bootstrap";
 
 var navigationStructure = __webpack_require__(4);
 var navigationService = __webpack_require__(5);

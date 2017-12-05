@@ -13,7 +13,7 @@ module.exports = {
     },
     devServer: {
         contentBase: './',
-        port: 8600,
+        port: 9876,
         contentBase: path.join(__dirname, "public")
     },
     module: {
@@ -22,6 +22,7 @@ module.exports = {
             loader: ExtractTextPlugin.extract(
                 // 'style-loader', // backup loader when not building .css file
                 'css-loader!sass-loader' // loaders to preprocess CSS
+                
             )
         }]
     },
