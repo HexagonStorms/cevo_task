@@ -68,49 +68,41 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-__webpack_require__(2);
-module.exports = __webpack_require__(3);
+module.exports = __webpack_require__(4);
 
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
+var navigationStructure = __webpack_require__(2);
+var navigationService = __webpack_require__(3);
 
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-console.log('hello world');
-function navigationService($location) {
-    console.log('in here');
-    this.locationService = $location;
-}
-
-// Find which View is requested, load appropriate template/data
-navigationService.prototype.navigateToCategory = function (category) {
-    this.locationService.path(category);
+var categoryCtrl = function($scope, $navigationService, $routeParams) {
+    console.log('Category Controller has loaded');
+    $scope.categoryId = $routeParams.categoryId;
 };
 
-navigationService.prototype.navigateToArea = function (category, area) {
-    this.locationService.path(category + "/" + area);
+var areaCtrl = function($scope, $navigationService, $routeParams) {
+    console.log('area Controller has loaded');
+    $scope.categoryId = $routeParams.categoryId;
+    $scope.areaId = $routeParams.areaId;
 };
 
-navigationService.prototype.navigateToSubArea = function (category, area, subArea) {
-    this.locationService.path(category + "/" + area + "/" + subArea);
+var subAreaCtrl = function($scope, $navigationService, $routeParams) {
+    console.log('subArea Controller has loaded');
+    $scope.categoryId = $routeParams.categoryId;
+    $scope.areaId = $routeParams.areaId;
+    $scope.subAreaId = $routeParams.subAreaId;
 };
 
-navigationService.prototype.navigateToChild = function (category, area, subArea, child) {
-    this.locationService.path(category + "/" + area + "/" + subArea + "/" + child);
+var childCtrl = function($scope, $navigationService, $routeParams) {
+    console.log('Child Controller has loaded');
+    $scope.categoryId = $routeParams.categoryId;
+    $scope.areaId = $routeParams.areaId;
+    $scope.subAreaId = $routeParams.subAreaId;
+    $scope.childId = $routeParams.childId;
 };
-
-// Templates for each type of view
-navigationService.categoryViewPath = "/:category";
-navigationService.areaViewPath = "/:category/:area";
-navigationService.subAreaViewPath = "/:category/:subarea";
-navigationService.childAreaViewPath = "/:category/:subarea/:child";
-navigationService.$inject = ["$location"];
 
 // Routes + Angular Instantiation
 angular
@@ -122,16 +114,20 @@ angular
         templateUrl: "../views/main.html"
     })
     .when(navigationService.categoryViewPath, {
-        templateUrl: "../views/category.html"
+        templateUrl: "../views/category.html",
+        controller: categoryCtrl
     })
     .when(navigationService.areaViewPath, {
-        templateUrl: "../views/area.html"
+        templateUrl: "../views/area.html",
+        controller: areaCtrl
     })
     .when(navigationService.subAreaViewPath, {
-        templateUrl: "../views/subarea.html"
+        templateUrl: "../views/subarea.html",
+        controller: subAreaCtrl
     })
     .when(navigationService.childAreaViewPath, {
-        templateUrl: "../views/child.html"
+        templateUrl: "../views/child.html",
+        controller: childCtrl
     })
     .otherwise({
        redirectTo: '/' 
@@ -139,213 +135,9 @@ angular
 }])
 
 // Main Application Controller for Navigation Menu
-.controller("cevoCtrl", function($scope, $navigationService) {
+.controller("cevoCtrl", function($scope, $navigationService, $routeParams) {
     console.log('controller loaded');
-    $scope.navigation = [
-        {
-            id: 1,
-            title: "Category 1",
-            areas: [
-                {
-                    id: 1,
-                    title: "Area 1",
-                    sub_headers: []
-                },
-                {
-                    id: 2,
-                    title: "Area 2",
-                    sub_headers: []
-                },
-                {
-                    id: 3,
-                    title: "Area 3",
-                    sub_headers: []
-                },
-                {
-                    id: 4,
-                    title: "Area 4",
-                    sub_headers: []
-                },
-                {
-                    id: 5,
-                    title: "Area 5",
-                    sub_headers: []
-                }
-            ]
-        },
-        {
-            id: 2,
-            title: "Category 2",
-            areas: [
-                {
-                    id: 1,
-                    title: "Area 1",
-                    sub_headers: [
-                        {
-                            id: 1,
-                            title: "Sub-Area 1",
-                            sub_headers: [],
-                        },
-                        {
-                            id: 2,
-                            title: "Sub-Area 2",
-                            sub_headers: [],
-                        },
-                        {
-                            id: 3,
-                            title: "Sub-Area 3",
-                            sub_headers: [],
-                        }
-                    ]
-                },
-                {
-                    id: 2,
-                    title: "Area 2",
-                    sub_headers: []
-                },
-                {
-                    id: 3,
-                    title: "Area 3",
-                    sub_headers: []
-                },
-                {
-                    id: 4,
-                    title: "Area 4",
-                    sub_headers: []
-                }
-            ]
-        },
-        {
-            id: 3,
-            title: "Category 3",
-            areas: [
-                {
-                    id: 1,
-                    title: "Area 1",
-                    sub_headers: [
-                        {
-                            id: 1,
-                            title: "Sub-Area 1",
-                            sub_headers: [
-                                {
-                                    id: 1,
-                                    title: "Child-Area 1",
-                                    sub_headers: [],
-                                },
-                                {
-                                    id: 2,
-                                    title: "Child-Area 2",
-                                    sub_headers: [],
-                                },
-                                {
-                                    id: 3,
-                                    title: "Child-Area 3",
-                                    sub_headers: [],
-                                },
-                                {
-                                    id: 4,
-                                    title: "Child-Area 4",
-                                    sub_headers: [],
-                                },
-                                {
-                                    id: 5,
-                                    title: "Child-Area 5",
-                                    sub_headers: [],
-                                },
-                                {
-                                    id: 6,
-                                    title: "Child-Area 6",
-                                    sub_headers: [],
-                                },
-                                
-                            ],
-                        },
-                        {
-                            id: 2,
-                            title: "Sub-Area 2",
-                            sub_headers: [],
-                        },
-                    ]
-                },
-                {
-                    id: 2,
-                    title: "Area 2",
-                    sub_headers: []
-                },
-                {
-                    id: 2,
-                    title: "Area 3",
-                    sub_headers: []
-                },
-                {
-                    id: 3,
-                    title: "Area 4",
-                    sub_headers: []
-                }
-            ]
-        },
-        {
-            id: 4,
-            title: "Category 4",
-            areas: [
-                {
-                    id: 1,
-                    title: "Area 1",
-                    sub_headers: [
-                        {
-                            id: 1,
-                            title: "Sub-Area 1",
-                            sub_headers: [],
-                        }
-                    ]
-                },
-                {
-                    id: 1,
-                    title: "Area 2",
-                    sub_headers: [
-                        {
-                            id: 1,
-                            title: "Sub-Area 1",
-                            sub_headers: [],
-                        }
-                    ]
-                },
-                {
-                    id: 3,
-                    title: "Area 3",
-                    sub_headers: [
-                        {
-                            id: 1,
-                            title: "Sub-Area 1",
-                            sub_headers: [],
-                        }
-                    ]
-                },
-                {
-                    id: 4,
-                    title: "Area 4",
-                    sub_headers: [
-                        {
-                            id: 1,
-                            title: "Sub-Area 1",
-                            sub_headers: [],
-                        }
-                    ]
-                },
-                {
-                    id: 5,
-                    title: "Area 5",
-                    sub_headers: [
-                        {
-                            id: 1,
-                            title: "Sub-Area 1",
-                            sub_headers: [],
-                        }
-                    ]
-                }
-            ]
-        }
-    ];
+    $scope.navigation = navigationStructure;
     
     $scope.goToCategory = function(category) {
         $navigationService.navigateToCategory(category);
@@ -365,7 +157,247 @@ angular
 });
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+var navigation = [
+    {
+        id: 1,
+        title: "Category 1",
+        areas: [
+        {
+            id: 1,
+            title: "Area 1",
+            sub_areas: []
+        },
+        {
+            id: 2,
+            title: "Area 2",
+            sub_areas: []
+        },
+        {
+            id: 3,
+            title: "Area 3",
+            sub_areas: []
+        },
+        {
+            id: 4,
+            title: "Area 4",
+            sub_areas: []
+        },
+        {
+            id: 5,
+            title: "Area 5",
+            sub_areas: []
+        }
+        ]
+    },
+    {
+        id: 2,
+        title: "Category 2",
+        areas: [
+        {
+            id: 1,
+            title: "Area 1",
+            sub_areas: [
+            {
+                id: 1,
+                title: "Sub-Area 1",
+                children: [],
+            },
+            {
+                id: 2,
+                title: "Sub-Area 2",
+                children: [],
+            },
+            {
+                id: 3,
+                title: "Sub-Area 3",
+                children: [],
+            }
+            ]
+        },
+        {
+            id: 2,
+            title: "Area 2",
+            sub_areas: []
+        },
+        {
+            id: 3,
+            title: "Area 3",
+            sub_areas: []
+        },
+        {
+            id: 4,
+            title: "Area 4",
+            sub_areas: []
+        }
+        ]
+    },
+    {
+        id: 3,
+        title: "Category 3",
+        areas: [
+        {
+            id: 1,
+            title: "Area 1",
+            sub_areas: [
+            {
+                id: 1,
+                title: "Sub-Area 1",
+                children: [
+                {
+                    id: 1,
+                    title: "Child-Area 1",
+                },
+                {
+                    id: 2,
+                    title: "Child-Area 2",
+                },
+                {
+                    id: 3,
+                    title: "Child-Area 3",
+                },
+                {
+                    id: 4,
+                    title: "Child-Area 4",
+                },
+                {
+                    id: 5,
+                    title: "Child-Area 5",
+                },
+                {
+                    id: 6,
+                    title: "Child-Area 6",
+                },
+
+                ],
+            },
+            {
+                id: 2,
+                title: "Sub-Area 2",
+                children: [],
+            },
+            ]
+        },
+        {
+            id: 2,
+            title: "Area 2",
+            sub_areas: []
+        },
+        {
+            id: 2,
+            title: "Area 3",
+            sub_areas: []
+        },
+        {
+            id: 3,
+            title: "Area 4",
+            sub_areas: []
+        }
+        ]
+    },
+    {
+        id: 4,
+        title: "Category 4",
+        areas: [
+        {
+            id: 1,
+            title: "Area 1",
+            sub_areas: [
+            {
+                id: 1,
+                title: "Sub-Area 1",
+                children: [],
+            }
+            ]
+        },
+        {
+            id: 1,
+            title: "Area 2",
+            sub_areas: [
+            {
+                id: 1,
+                title: "Sub-Area 1",
+                children: [],
+            }
+            ]
+        },
+        {
+            id: 3,
+            title: "Area 3",
+            sub_areas: [
+            {
+                id: 1,
+                title: "Sub-Area 1",
+                children: [],
+            }
+            ]
+        },
+        {
+            id: 4,
+            title: "Area 4",
+            sub_areas: [
+            {
+                id: 1,
+                title: "Sub-Area 1",
+                children: [],
+            }
+            ]
+        },
+        {
+            id: 5,
+            title: "Area 5",
+            sub_areas: [
+            {
+                id: 1,
+                title: "Sub-Area 1",
+                children: [],
+            }
+            ]
+        }
+        ]
+    }
+];
+module.exports = navigation;
+
+/***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+function navigationService($location) {
+    console.log('in here');
+    this.locationService = $location;
+}
+
+// Find which view is requested, load appropriate template/data
+navigationService.prototype.navigateToCategory = function (categoryId) {
+    this.locationService.path(categoryId);
+};
+
+navigationService.prototype.navigateToArea = function (categoryId, areaId) {
+    this.locationService.path(categoryId + "/" + areaId);
+};
+
+navigationService.prototype.navigateToSubArea = function (categoryId, areaId, subAreaId) {
+    this.locationService.path(categoryId + "/" + areaId + "/" + subAreaId);
+};
+
+navigationService.prototype.navigateToChild = function (categoryId, areaId, subAreaId, childId) {
+    this.locationService.path(categoryId + "/" + areaId + "/" + subAreaId + "/" + childId);
+};
+
+// Templates for each type of view
+navigationService.categoryViewPath = "/:categoryId";
+navigationService.areaViewPath = "/:categoryId/:areaId";
+navigationService.subAreaViewPath = "/:categoryId/:areaId/:subAreaId";
+navigationService.childAreaViewPath = "/:categoryId/:areaId/:subAreaId/:childId";
+navigationService.$inject = ["$location"];
+
+module.exports = navigationService;
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

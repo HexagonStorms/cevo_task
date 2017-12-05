@@ -4,7 +4,6 @@ const path = require('path');
 
 module.exports = {
     entry: [
-        './public/js/navigation-service.js',
         './public/js/app.js',
         './public/css/app.scss'
     ],

@@ -30,13 +30,30 @@
                 <ul class="nav navbar-nav">
                     <li ng-repeat="category in navigation" ng-class="{ 'dropdown': category.areas.length > 0 }">
                         
+                        <!-- CATEGORIES -->
                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span ng-click="goToCategory(category.id)">{{category.title}}</span>
                             <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li ng-repeat="area in category.areas">
-                                <a href="javascript:void(0)" ng-click="goToArea(category.id, area.id)">{{area.title}}</a>
+                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                            <li ng-repeat="area in category.areas" class="dropdown-submenu">
+                                
+                                <!-- AREAS -->
+                                <a href="javascript:void(0)" ng-click="goToArea(category.id, area.id)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
+                                    {{area.title}}
+                                </a>
+                                <ul class="dropdown-menu">
+                                    
+                                    <!-- SUBAREAS -->
+                                    <li class="dropdown-submenu" ng-repeat="subArea in area.sub_areas">
+                                        <a href="#">{{subArea.title}}</a>
+                                        <ul class="dropdown-menu">
+                                            
+                                            <!-- CHILDREN -->
+                                            <li ng-repeat="child in subArea.children"><a href="#">{{child.title}}</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
