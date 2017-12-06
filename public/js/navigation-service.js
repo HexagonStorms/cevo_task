@@ -4,7 +4,6 @@ function navigationService($location) {
     // Find which view is requested, load appropriate template/data
 	// Here is where we could insert any additional application logic
 	// Creating a route params object for demonstrative purposes, although $routeParams can do the same thing
-    
     this.navigateToCategory = function (categoryId) {
     	this.locationService.path(categoryId);
     	this.routes = {

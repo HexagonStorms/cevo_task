@@ -1,9 +1,13 @@
+// Import Angular + Angular Router
 import "../../node_modules/angular/angular";
 import "../../node_modules/angular-route/angular-route";
 
+// Mock JSON of Navigation Structure
 var navigationStructure = require('./navigation-structure.js');
+// Load the Navigation Service
 var navigationService = require('./navigation-service.js');
 
+// Controllers
 var categoryCtrl = function($scope, $navigationService) {
     console.log('Category Controller loaded');
     $scope.routes = $navigationService.routes;
